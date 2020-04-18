@@ -1,6 +1,7 @@
 package fastqueue
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -10,7 +11,7 @@ func TestQueue_Push(t *testing.T) {
 	q.Push(1, 2)
 	q.Push(2, 2)
 	q.Push(3, 1)
-	if q.Len() != 2 {
+	if q.Len() != 4 {
 		t.Error("Push Function Failed")
 	}
 }
@@ -68,7 +69,7 @@ func TestQueue_Pop(t *testing.T) {
 	q.Pop()
 	q.Pop()
 	id, val := q.Pop()
-	if id != 0 && val != float64(1) {
+	if id != 2 && val != float64(2) {
 		t.Error("Pop function failed")
 	}
 }
@@ -86,8 +87,9 @@ func TestQueue_All(t *testing.T) {
 	q.Push(1, 2)
 
 	mapp := q.All()
+	fmt.Println(mapp)
 
-	if mapp != nil {
+	if mapp == nil {
 		t.Error("All function failed")
 	}
 }
