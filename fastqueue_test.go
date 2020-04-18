@@ -91,30 +91,3 @@ func TestQueue_All(t *testing.T) {
 		t.Error("All function failed")
 	}
 }
-
-func BenchmarkQueue_Push(b *testing.B) {
-	var q Queue
-	for i := 0; i < b.N; i++ {
-		q.Push(i, float64(i+1))
-	}
-}
-func BenchmarkQueue_Pop(b *testing.B) {
-	var q Queue
-	for i := 0; i < b.N; i++ {
-		q.Push(i, float64(i+1))
-		q.Pop()
-	}
-}
-
-func BenchmarkQueue_Peek(b *testing.B) {
-	var q Queue
-	for i := 0; i < b.N; i++ {
-		q.Peek()
-	}
-}
-func BenchmarkQueue_All(b *testing.B) {
-	var q Queue
-	for i := 0; i < b.N; i++ {
-		q.All()
-	}
-}
