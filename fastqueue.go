@@ -7,7 +7,7 @@ type Queue struct {
 	values []float64
 }
 
-//Push funtion is used to insert ids and items to queue
+//Push inserts id and item to queue
 func (q *Queue) Push(id int, value float64) {
 	q.ids = append(q.ids, id)
 	q.values = append(q.values, value)
@@ -28,7 +28,7 @@ func (q *Queue) Push(id int, value float64) {
 	q.values[pos] = value
 }
 
-//Pop funtion is used to remove and return top item in queue
+//Pop removes and returns the top item in queue
 func (q *Queue) Pop() (int, float64) {
 	if q.length == 0 {
 		return 0, 0
@@ -92,4 +92,16 @@ func (q *Queue) PeekValue() float64 {
 //Len returns the length of the queue
 func (q *Queue) Len() int {
 	return q.length
+}
+
+//All returns the all the ids and values in queue
+func (q *Queue) All() map[int]float64 {
+	items := make(map[int]float64)
+	for i := 0; i < q.length; i++ {
+		id := q.ids[i]
+		value := q.values[i]
+		items[id] = value
+
+	}
+	return items
 }
